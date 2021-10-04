@@ -47,7 +47,7 @@ public class XmlTableFormatterTest {
     public void withCheckConstraint() throws ParserConfigurationException, TransformerException {
         String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><database>\n" +
                 "   <tables>\n" +
-                "      <table catalog=\"catalog\" name=\"table\" numRows=\"0\" remarks=\"table\" schema=\"schema\" type=\"TABLE\">\n" +
+                "      <table catalog=\"catalog\" name=\"table\" numRows=\"0\" remarks=\"test\" schema=\"schema\" type=\"TABLE\">\n" +
                 "         <checkConstraint constraint=\"check\" name=\"this is a\"/>\n" +
                 "      </table>\n" +
                 "   </tables>\n" +
@@ -57,7 +57,7 @@ public class XmlTableFormatterTest {
         Element element = doc.createElement("database");
         doc.appendChild(element);
 
-        Table table = new Table(mockDatabase("database"),"catalog", "schema", "table", "table");
+        Table table = new Table(mockDatabase("database"),"catalog", "schema", "table", "table\ntest");
         table.addCheckConstraint("this is a", "check");
 
         xmlTableFormatter.appendTables(element, Collections.singletonList(table));
