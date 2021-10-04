@@ -154,6 +154,12 @@ public class MustacheTableColumn {
         return comments;
     }
 
+    public String getLogicalName() {
+        String logicalName = column.getLogicalName();
+        logicalName= Markdown.toHtml(logicalName, rootPath);
+        return logicalName;
+    }
+
     private void prepareRelatives(List<MustacheTableColumnRelatives> relatives, boolean dumpParents) {
         Set<TableColumn> relativeColumns = dumpParents ? column.getParents() : column.getChildren();
 

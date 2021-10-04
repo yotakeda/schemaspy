@@ -33,13 +33,10 @@
                                 <thead align='left'>
                                 <tr>
                                     <th>Column</th>
+                                    <th>LogicalName</th>
                                     <th>Type</th>
                                     <th>Size</th>
                                     <th title='Are nulls allowed?'>Nulls</th>
-                                    <th title='Is column automatically updated?'>Auto</th>
-                                    <th title='Default value'>Default</th>
-                                    <th title='Columns in tables that reference this column'>Children</th>
-                                    <th title='Columns in tables that are referenced by this column'>Parents</th>
                                     <th title='Comments' class="toggle"><span>Comments</span></th>
                                 </tr>
                                 </thead>
@@ -47,31 +44,10 @@
                                 {{#columns}}
                                 <tr>
                                     <td{{{key}}}>{{{keyIcon}}}<span id="{{column.name}}">{{column.name}}</span></td>
+                                    <td>{{column.logicalName}}</td>
                                     <td>{{column.typeName}}</td>
                                     <td>{{column.detailedSize}}</td>
                                     <td title='{{titleNullable}}'>{{nullable}}</td>
-                                    <td title='{{titleAutoUpdated}}'>{{autoUpdated}}</td>
-                                    <td>{{defaultValue}}</td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                            {{#children}}
-                                            <tr>
-                                                <td title="{{constraint}}"><a href='{{path}}{{table.name}}.html'>{{table.name}}</a><span class='relatedKey'>.{{column.name}}</span></td>
-                                                <td class="constraint detail">{{constraint.name}}<span title='{{constraint.deleteRuleDescription}}'>{{constraint.deleteRuleAlias}}</span></td>
-                                            </tr>
-                                            {{/children}}
-                                        </table>
-                                    </td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                            {{#parents}}
-                                            <tr>
-                                                <td title="{{constraint}}"><a href='{{path}}{{table.name}}.html'>{{table.name}}</a><span class='relatedKey'>.{{column.name}}</span></td>
-                                                <td class="constraint detail">{{constraint.name}}<span title='{{constraint.deleteRuleDescription}}'>{{constraint.deleteRuleAlias}}</span></td>
-                                            </tr>
-                                            {{/parents}}
-                                        </table>
-                                    </td>
                                     <td>{{{comments}}}</td>
                                 </tr>
                                 {{/columns}}

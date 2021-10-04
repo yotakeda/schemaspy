@@ -315,7 +315,23 @@ public class TableColumn {
      * @return Comments associated with this column, or <code>null</code> if none.
      */
     public String getComments() {
-        return comments;
+        if (comments == null) {
+            return "";
+        }
+        String[] commentsArr = comments.split("\n");
+        // Return empty string so that the first line of comments means logical name.
+        if (commentsArr.length <= 1) {
+            return "";
+        }
+        return String.join("\n", Arrays.asList(comments.split("\n")).subList(1, commentsArr.length));
+    }
+
+    public String getLogicalName() {
+        if (comments == null) {
+            return "";
+        }
+        String[] commentsArr = comments.split("\n");
+        return commentsArr[0];
     }
 
     /**

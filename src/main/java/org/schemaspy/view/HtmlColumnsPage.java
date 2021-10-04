@@ -84,6 +84,7 @@ public class HtmlColumnsPage {
                 .put("nullable", valueOrEmptyString(mc.getNullable()))
                 .put("autoUpdated", valueOrEmptyString(mc.getAutoUpdated()))
                 .put("defaultValue", valueOrEmptyString(mc.getDefaultValue()))
+                .put("logicalName", valueOrEmptyString(mc.getLogicalName()))
                 .put("comments", valueOrEmptyString(mc.getComments())));
         });
 
