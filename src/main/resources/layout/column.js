@@ -31,7 +31,7 @@ $(document).ready(function () {
                 render: function (data, type, row, meta) {
                     return (
                         '<a href="tables/' +
-                        row.tableFileName +
+                        row.tableName +
                         '.html" target="_top">' +
                         data +
                         "</a>"
