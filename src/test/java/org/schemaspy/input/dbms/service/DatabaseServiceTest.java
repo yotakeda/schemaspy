@@ -69,8 +69,9 @@ public class DatabaseServiceTest {
         }).when(tableService).connectForeignKeys(any(),any(),anyMap());
         ViewService viewService = mock(ViewService.class);
         RoutineService routineService = mock(RoutineService.class);
+        EnumService enumService = mock(EnumService.class);
         SequenceService sequenceService = mock(SequenceService.class);
-        DatabaseService databaseService = new DatabaseService(clock, sqlService, tableService, viewService, routineService, sequenceService);
+        DatabaseService databaseService = new DatabaseService(clock, sqlService, tableService, viewService, routineService, enumService, sequenceService);
         List<Table> tablesList = new ArrayList<>();
         tablesList.add(mock(Table.class));
         tablesList.add(mock(Table.class));
@@ -99,8 +100,9 @@ public class DatabaseServiceTest {
         }).when(tableService).connectForeignKeys(any(),any(),anyMap());
         ViewService viewService = mock(ViewService.class);
         RoutineService routineService = mock(RoutineService.class);
+        EnumService enumService = mock(EnumService.class);
         SequenceService sequenceService = mock(SequenceService.class);
-        DatabaseService databaseService = new DatabaseService(clock, sqlService, tableService, viewService, routineService, sequenceService);
+        DatabaseService databaseService = new DatabaseService(clock, sqlService, tableService, viewService, routineService, enumService, sequenceService);
         List<Table> tablesList = new ArrayList<>();
         tablesList.add(mock(Table.class));
         tablesList.add(mock(Table.class));
@@ -129,8 +131,9 @@ public class DatabaseServiceTest {
         }).when(tableService).connectForeignKeys(any(),any(),anyMap());
         ViewService viewService = mock(ViewService.class);
         RoutineService routineService = mock(RoutineService.class);
+        EnumService enumService = mock(EnumService.class);
         SequenceService sequenceService = mock(SequenceService.class);
-        DatabaseService databaseService = new DatabaseService(clock, sqlService, tableService, viewService, routineService, sequenceService);
+        DatabaseService databaseService = new DatabaseService(clock, sqlService, tableService, viewService, routineService, enumService, sequenceService);
         List<Table> tablesList = new ArrayList<>();
         tablesList.add(mock(Table.class));
         tablesList.add(mock(Table.class));

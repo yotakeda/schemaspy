@@ -413,6 +413,12 @@ public class SchemaAnalyzer {
             }
         }
 
+        HtmlEnumsPage htmlEnumsPage = new HtmlEnumsPage(mustacheCompiler);
+        try (Writer writer = Writers.newPrintWriter(outputDir.toPath().resolve("enums.html").toFile())) {
+            htmlEnumsPage.write(db.getEnums(), writer);
+        }
+
+
         // create detailed diagrams
 
         duration = progressListener.startedGraphingDetails();

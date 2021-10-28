@@ -67,13 +67,18 @@ public class WiringConfiguration {
     }
 
     @Bean
+    public EnumService enumService(SqlService sqlService) {
+        return new EnumService(sqlService);
+    }
+
+    @Bean
     public SequenceService sequencesService(SqlService sqlService) {
         return new SequenceService(sqlService);
     }
 
     @Bean
-    public DatabaseService databaseService(Clock clock, SqlService sqlService, TableService tableService, ViewService viewService, RoutineService routineService, SequenceService sequenceService) {
-        return new DatabaseService(clock, sqlService, tableService, viewService, routineService, sequenceService);
+    public DatabaseService databaseService(Clock clock, SqlService sqlService, TableService tableService, ViewService viewService, RoutineService routineService, EnumService enumService, SequenceService sequenceService) {
+        return new DatabaseService(clock, sqlService, tableService, viewService, routineService, enumService, sequenceService);
     }
 
     @Bean

@@ -66,17 +66,19 @@ public class DatabaseService {
     private final TableService tableService;
     private final ViewService viewService;
     private final RoutineService routineService;
+    private final EnumService enumService;
     private final SequenceService sequenceService;
 
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-    public DatabaseService(Clock clock, SqlService sqlService, TableService tableService, ViewService viewService, RoutineService routineService, SequenceService sequenceService) {
+    public DatabaseService(Clock clock, SqlService sqlService, TableService tableService, ViewService viewService, RoutineService routineService, EnumService enumService, SequenceService sequenceService) {
         this.clock = Objects.requireNonNull(clock);
         this.sqlService = Objects.requireNonNull(sqlService);
         this.tableService = Objects.requireNonNull(tableService);
         this.viewService = Objects.requireNonNull(viewService);
         this.routineService = Objects.requireNonNull(routineService);
+        this.enumService = Objects.requireNonNull(enumService);
         this.sequenceService = Objects.requireNonNull(sequenceService);
     }
 
@@ -103,6 +105,7 @@ public class DatabaseService {
         viewService.gatherViewColumnComments(config, db);
         initColumnTypes(config, db);
         routineService.gatherRoutines(config, db);
+        enumService.gatherEnums(config, db);
         sequenceService.gatherSequences(config, db);
 
         listener.startedConnectingTables();
