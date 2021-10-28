@@ -61,8 +61,9 @@ public class EnumService {
                     String name = rs.getString("name");
                     String label = rs.getString("label");
                     String description = rs.getString("description");
+                    int enumsortorder = rs.getInt("enumsortorder");
 
-                    Enum enumModel = new Enum(name, label, description);
+                    Enum enumModel = new Enum(name, label, description, enumsortorder);
                     db.getEnumsMap().put(key, enumModel);
                 }
             } catch (SQLException sqlException) {

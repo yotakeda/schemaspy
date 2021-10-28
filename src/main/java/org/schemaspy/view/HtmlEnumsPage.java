@@ -31,8 +31,9 @@ import java.io.IOException;
 import java.io.Writer;
 import java.lang.invoke.MethodHandles;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.ArrayList;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 /**
  * The page that lists all of the enums (stored procedures and functions)
@@ -54,10 +55,13 @@ public class HtmlEnumsPage {
 
     public void write(Collection<Enum> enums, Writer writer) {
 
+        ArrayList<Enum> enumList = new ArrayList<>(enums);
+        Collections.sort(enumList, new Enum.ByEnumIdComparator());
+
         PageData pageData = new PageData.Builder()
                 .templateName("enums.html")
                 .scriptName("enums.js")
-                .addToScope("enums", enums)
+                .addToScope("enums", enumList)
                 .addToScope("md2html", (Function<String,String>) md -> Markdown.toHtml(md, mustacheCompiler.getRootPath(0)))
                 .getPageData();
 

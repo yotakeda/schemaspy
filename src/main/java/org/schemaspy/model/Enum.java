@@ -21,6 +21,8 @@
  */
 package org.schemaspy.model;
 
+import java.util.*;
+
 /**
  * Metadata about a stored procedure or function
  *
@@ -31,6 +33,7 @@ public class Enum implements Comparable<Enum> {
     private final String name;
     private final String label;
     private final String description;
+    private final int enumsortorder;
 
     /**
      * @param name
@@ -39,10 +42,12 @@ public class Enum implements Comparable<Enum> {
      */
     public Enum(String name,
                     String label,
-                    String description) {
+                    String description,
+                    int enumsortorder) {
         this.name = name;
         this.label = label;
         this.description = description;
+        this.enumsortorder = enumsortorder;
     }
 
     /**
@@ -66,6 +71,13 @@ public class Enum implements Comparable<Enum> {
         return description;
     }
 
+    /**
+     * @return
+     */
+    public int getEnumSortOrder() {
+        return enumsortorder;
+    }
+
     /* (non-Javadoc)
      * @see java.lang.Comparable#compareTo(java.lang.Object)
      */
@@ -76,6 +88,22 @@ public class Enum implements Comparable<Enum> {
         if (rc == 0)
             rc = String.valueOf(getDescription()).compareTo(String.valueOf(other.getDescription()));
         return rc;
+    }
+
+    /**
+     * Implementation of {@link Comparator} that sorts {@link Enum}s
+     */
+    public static class ByEnumIdComparator implements Comparator<Enum> {
+        public int compare(Enum enum1, Enum enum2) {
+            String name1 = enum1.getName();
+            String name2 = enum2.getName();
+
+            int rc = name1.compareToIgnoreCase(name2) ;
+            if (rc == 0) {
+                rc = enum1.getEnumSortOrder() - enum2.getEnumSortOrder();
+            }
+            return rc;
+        }
     }
 }
 
