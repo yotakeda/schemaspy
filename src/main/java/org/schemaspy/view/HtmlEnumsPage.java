@@ -54,9 +54,6 @@ public class HtmlEnumsPage {
 
     public void write(Collection<Enum> enums, Writer writer) {
 
-        LOGGER.info("hogehogeho");
-        LOGGER.info(enums.stream().map(e -> e.getLabel()).collect(Collectors.joining(",")));
-
         PageData pageData = new PageData.Builder()
                 .templateName("enums.html")
                 .scriptName("enums.js")
