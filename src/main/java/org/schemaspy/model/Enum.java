@@ -68,8 +68,28 @@ public class Enum implements Comparable<Enum> {
      * @return
      */
     public String getDescription() {
-        return description;
+        if (description == null) {
+            return "";
+        }
+        String[] descriptionArr = description.split("\n");
+        // Return empty string so that the first line of description means logical name.
+        if (descriptionArr.length <= 1) {
+            return "";
+        }
+        return String.join("\n", Arrays.asList(description.split("\n")).subList(1, descriptionArr.length));
     }
+
+    /**
+     * @return
+     */
+    public String getLogicalName() {
+        if (description == null) {
+            return "";
+        }
+        String[] descriptionArr = description.split("\n");
+        return descriptionArr[0];
+    }
+
 
     /**
      * @return
