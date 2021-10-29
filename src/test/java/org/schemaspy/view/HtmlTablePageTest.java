@@ -45,7 +45,8 @@ public class HtmlTablePageTest {
 
         htmlTablePage.write(table, Collections.emptyList(), writer);
 
-        assertThat(writer.toString()).contains("<h1>A_TABLE</h1><p><span id=\"recordNumber\">0</span> rows</p><br />");
+        assertThat(writer.toString()).contains("<h1>A_TABLE</h1>");
+        assertThat(writer.toString()).contains("<p><span id=\"recordNumber\">0</span> rows</p>");
     }
 
     @Test
@@ -63,6 +64,6 @@ public class HtmlTablePageTest {
 
         htmlTablePage.write(table, Collections.emptyList(), writer);
 
-        assertThat(writer.toString()).doesNotContain("<h1>A_TABLE</h1><p><span id=\"recordNumber\">0</span> rows</p><br />");
+        assertThat(writer.toString()).doesNotContain("<p><span id=\"recordNumber\">0</span> rows</p>");
     }
 }

@@ -28,6 +28,7 @@ import org.schemaspy.model.Table;
 public class MustacheTable {
     private Table table;
     private String diagramName;
+    private String logicalName;
     private String comments;
 
     public MustacheTable(Table table, String imageFile) {
@@ -41,6 +42,14 @@ public class MustacheTable {
 
     public void setComments(String comments) {
         this.comments = comments;
+    }
+
+    public String getLogicalName() {
+        return logicalName;
+    }
+
+    public void setLogicalName(String logicalName) {
+        this.logicalName = logicalName;
     }
 
     public Table getTable() {

@@ -145,6 +145,7 @@
                                 <thead>
                                     <tr>
                                         <th valign="bottom">Table / View</th>
+                                        <th align="right" valign="bottom">LogicalName</th>
                                         <th align="right" valign="bottom">Children</th>
                                         <th align="right" valign="bottom">Parents</th>
                                         <th align="right" valign="bottom">Columns</th>
@@ -159,6 +160,7 @@
                                     {{#tables}}
                                     <tr class="tbl even" valign="top">
                                         <td class="detail"><a href="tables/{{table.name}}.html">{{table.name}}</a></td>
+                                        <td class="detail"><a href="tables/{{table.name}}.html">{{table.logicalName}}</a></td>
                                         <td class="detail" align="right">{{table.maxChildren}}</td>
                                         <td class="detail" align="right">{{table.maxParents}}</td>
                                         <td class="detail" align="right">{{table.columns.size}}</td>

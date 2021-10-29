@@ -68,8 +68,10 @@ public class HtmlMainIndexPage {
         for(Table table: tables) {
             columnsAmount += table.getColumns().size();
             String comments = Markdown.toHtml(table.getComments(), "");
+            String logicalName = Markdown.toHtml(table.getLogicalName(), "");
             MustacheTable mustacheTable = new MustacheTable(table, "");
             mustacheTable.setComments(comments);
+            mustacheTable.setLogicalName(logicalName);
             mustacheTables.add(mustacheTable);
         }
 
